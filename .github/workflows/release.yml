@@ -24,7 +24,7 @@ jobs:
       - name: Detect charts
         id: charts
         run: |
-          echo "charts='[\"$(ls -m | sed 's/, /", "/g')\"]'" >> $GITHUB_OUTPUT
+          echo "charts='[\"$(ls -m charts | sed 's/, /", "/g')\"]'" >> $GITHUB_OUTPUT
 
       - name: Show charts
         id: debug

@@ -17,6 +17,10 @@ jobs:
     outputs:
       charts: ${{ steps.charts.outputs.CHARTS }}
     steps:
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        with:
+          fetch-depth: 0
+
       - name: Detect charts
         id: charts
         run: |

@@ -3,6 +3,16 @@ entries:
   test:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2025-11-29T12:54:51.722527208Z"
+    description: A Helm chart for Kubernetes
+    digest: a187a1bf375a30c5c2346e83056b3322e396648a533436fde38272eb4f39d35e
+    name: test
+    type: application
+    urls:
+    - https://github.com/robinlioret/helm-charts/releases/download/test-0.0.2/test-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2025-11-29T11:29:00.554241755Z"
     description: A Helm chart for Kubernetes
     digest: 1a819b53e13c79d7ad1335a743312733fc8c9e5ffe34a3ef1e8c00bac53df1ec
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/robinlioret/helm-charts/releases/download/test-0.0.1/test-0.0.1.tgz
     version: 0.0.1
-generated: "2025-11-29T11:29:00.554252536Z"
+generated: "2025-11-29T12:54:51.722534502Z"

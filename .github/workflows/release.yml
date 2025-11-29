@@ -8,28 +8,28 @@ on:
 #      - 'charts/**/Chart.yaml'
 
 jobs:
-  detect-charts:
-    runs-on: ubuntu-latest
-    if: |
-      ${{github.repository == 'robinlioret/helm-charts' }}
-    permissions:
-      contents: read
-    outputs:
-      charts: ${{ steps.charts.outputs.charts }}
-    steps:
-      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
-        with:
-          fetch-depth: 0
-
-      - name: Detect charts
-        id: charts
-        run: |
-          echo "charts=[\"$(ls -m charts | sed 's/, /", "/g')\"]" >> $GITHUB_OUTPUT
-
-      - name: Show charts
-        id: debug
-        run: |
-          echo "${{ steps.charts.outputs.charts }}"
+#  detect-charts:
+#    runs-on: ubuntu-latest
+#    if: |
+#      ${{github.repository == 'robinlioret/helm-charts' }}
+#    permissions:
+#      contents: read
+#    outputs:
+#      charts: ${{ steps.charts.outputs.charts }}
+#    steps:
+#      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+#        with:
+#          fetch-depth: 0
+#
+#      - name: Detect charts
+#        id: charts
+#        run: |
+#          echo "charts=[\"$(ls -m charts | sed 's/, /", "/g')\"]" >> $GITHUB_OUTPUT
+#
+#      - name: Show charts
+#        id: debug
+#        run: |
+#          echo "${{ steps.charts.outputs.charts }}"
 
   release:
     runs-on: ubuntu-latest
@@ -37,10 +37,10 @@ jobs:
       ${{github.repository == 'robinlioret/helm-charts' }}
     permissions:
       contents: write
-    needs: detect-charts
-    strategy:
-      matrix:
-        chart: ${{ fromJson(needs.detect-charts.outputs.charts) }}
+#    needs: detect-charts
+#    strategy:
+#      matrix:
+#        chart: ${{ fromJson(needs.detect-charts.outputs.charts) }}
     steps:
       - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
         with:
@@ -56,4 +56,5 @@ jobs:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
           charts_dir: charts/${{ matrix.chart }}
+#          charts_dir: charts/${{ matrix.chart }}
 

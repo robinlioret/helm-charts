@@ -27,7 +27,7 @@ jobs:
           echo "charts='[\"$(ls -m | sed 's/, /", "/g')\"]'" >> $GITHUB_OUTPUT
 
       - name: Show charts
-        id: charts
+        id: debug
         run: |
           echo "${{ steps.charts.outputs.charts }}"
 

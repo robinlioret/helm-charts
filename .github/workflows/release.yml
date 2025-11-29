@@ -24,8 +24,7 @@ jobs:
       - name: Detect charts
         id: charts
         run: |
-          # echo "charts='[\"$(ls -m charts | sed 's/, /", "/g')\"]'" >> $GITHUB_OUTPUT
-          echo "charts=\"[$(ls -m charts)]\"" >> $GITHUB_OUTPUT
+          echo "charts=[\"$(ls -m charts | sed 's/, /", "/g')\"]" >> $GITHUB_OUTPUT
 
       - name: Show charts
         id: debug
@@ -41,7 +40,7 @@ jobs:
     needs: detect-charts
     strategy:
       matrix:
-        chart: ${{ needs.detect-charts.outputs.charts }}
+        chart: ${{ fromJson(needs.detect-charts.outputs.charts) }}
     steps:
       - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
         with:

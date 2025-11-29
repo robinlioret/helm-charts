@@ -15,7 +15,7 @@ jobs:
     permissions:
       contents: read
     outputs:
-      charts: ${{ steps.charts.outputs.CHARTS }}
+      charts: ${{ steps.charts.outputs.charts }}
     steps:
       - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
         with:
@@ -24,7 +24,12 @@ jobs:
       - name: Detect charts
         id: charts
         run: |
-          echo "CHARTS=$(ls charts)" >> $GITHUB_OUTPUT    
+          echo "charts='[\"$(ls -m | sed 's/, /", "/g')\"]'" >> $GITHUB_OUTPUT
+
+      - name: Show charts
+        id: charts
+        run: |
+          echo "${{ steps.charts.outputs.charts }}"
 
   release:
     runs-on: ubuntu-latest

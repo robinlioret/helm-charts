@@ -37,6 +37,7 @@ jobs:
       ${{github.repository == 'robinlioret/helm-charts' }}
     permissions:
       contents: write
+    needs: detect-charts
     strategy:
       matrix:
         chart: ${{ fromJson(needs.detect-charts.outputs.charts) }}

@@ -34,7 +34,7 @@ jobs:
       - name: Bump version
         run: |
           chmod +x ./hacks/bump-version.sh
-          ./hacks/bump-version.sh charts/${{ github.event.inputs.chart_dir }} ${{ github.event.inputs.new_version }}
+          ./hacks/bump-version.sh charts ${{ github.event.inputs.chart_dir }} ${{ github.event.inputs.new_version }}
           git add .
 
       - name: Create Pull Request

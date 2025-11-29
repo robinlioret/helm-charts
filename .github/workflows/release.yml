@@ -7,13 +7,13 @@ on:
     paths:
       - 'charts/**/.version'
 
+permissions:
+  contents: write # For writing tags to repo and to gh-pages branch
+
 jobs:
   release:
     runs-on: ubuntu-latest
-    if: |
-      ${{github.repository == 'robinlioret/helm-charts' }}
-    permissions:
-      contents: write
+    if: ${{github.repository == 'robinlioret/helm-charts' }}
     steps:
       - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
         with:

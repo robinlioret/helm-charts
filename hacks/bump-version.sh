@@ -23,8 +23,8 @@ else
 fi
 
 # Replace all occurrences of vX.Y.Z with the new version (vNEW_VERSION)
-sed -Ei "s/[0-9]+\.[0-9]+\.[0-9]+(\-[a-zA-Z0-9\-\.]+)*/$NEW_VERSION/g" Chart.yaml
+sed -Ei "s/^version: [0-9]+\.[0-9]+\.[0-9]+(\-[a-zA-Z0-9\-\.]+)*/version: $NEW_VERSION/g" Chart.yaml
 
 # Set the new version file
-echo "$NEW_VERSION" > .version
+echo -n "$NEW_VERSION" > .version
 echo "Bump chart version to $NEW_VERSION for chart $CHARTS_DIR/$CHART_SUBDIR"

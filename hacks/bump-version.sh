@@ -6,14 +6,13 @@
 set -e
 set -x
 
-if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
-  echo "Usage: $0 <charts_dir> <chart_dir> <new_version>"
+if [ -z "$1" ] || [ -z "$2" ]; then
+  echo "Usage: $0 <charts_dir> <new_version>"
   exit 1
 fi
 
 CHARTS_DIR="$1"
-CHART_SUBDIR="$2"
-NEW_VERSION="$3"
+NEW_VERSION="$2"
 
 if [ -d "$CHARTS_DIR/$CHART_SUBDIR" ]; then
   cd "$CHARTS_DIR/$CHART_SUBDIR"
